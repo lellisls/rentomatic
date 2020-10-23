@@ -6,6 +6,7 @@ import pytest
 from rentomatic.domain import room as r
 from rentomatic.use_cases import room_list_use_case as uc
 
+
 @pytest.fixture
 def domain_rooms():
     room_1 = r.Room(

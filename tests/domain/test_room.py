@@ -1,4 +1,5 @@
 import uuid
+
 from rentomatic.domain import room as r
 
 
