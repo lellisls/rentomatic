@@ -1,5 +1,8 @@
+import uuid
+
+
 class Room:
-    def __init__(self, code: str, size: int, price: float, longitude: float, latitude: float):
+    def __init__(self, code: uuid, size: int, price: float, longitude: float, latitude: float):
         self.code = code
         self.size = size
         self.price = price
