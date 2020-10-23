@@ -1,6 +1,5 @@
-
 class Room:
-    def __init__(self, code, size, price, longitude, latitude):
+    def __init__(self, code: str, size: int, price: float, longitude: float, latitude: float):
         self.code = code
         self.size = size
         self.price = price
@@ -8,7 +7,7 @@ class Room:
         self.latitude = latitude
 
     @classmethod
-    def from_dict(cls, some_dict) -> 'Room':
+    def from_dict(cls, some_dict: dict) -> 'Room':
         return cls(
             code=some_dict['code'],
             size=some_dict['size'],
@@ -25,3 +24,6 @@ class Room:
             'longitude': self.longitude,
             'latitude': self.latitude
         }
+
+    def __eq__(self, other: 'Room'):
+        return self.to_dict() == other.to_dict()
