@@ -45,7 +45,8 @@ def test_room_list_without_parameters(domain_rooms):
     repo.list.return_value = domain_rooms
 
     room_list_use_case = uc.RoomListUseCase(repo)
-    result = room_list_use_case.execute()
+    response = room_list_use_case.execute()
 
+    assert bool(response) is True
     repo.list.assert_called_with()
-    assert result == domain_rooms
+    assert response.value == domain_rooms
