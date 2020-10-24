@@ -2,7 +2,7 @@ import json
 
 from flask import Blueprint, request, Response
 
-from rentomatic.repository.postgresrepo import PostgresRepo
+from rentomatic.repository.mongorepo import MongoRepo
 from rentomatic.request_objects.room_list_request_object import RoomListRequestObject
 from rentomatic.response_objects.response_objects import ResponseSuccess, ResponseFailure
 from rentomatic.serializers import room_json_serializer as ser
@@ -19,16 +19,15 @@ STATUS_CODES = {
 
 connection_data = {
     'dbname': 'rentomaticdb',
-    'user': 'postgres',
+    'user': 'root',
     'password': 'rentomaticdb',
-    'host': 'localhost',
-    'port': 15432
+    'host': 'localhost'
 }
 
 
 @blueprint.route('/rooms', methods=['GET'])
 def room():
-    repo = PostgresRepo(connection_data)
+    repo = MongoRepo(connection_data)
     use_case = uc.RoomListUseCase(repo)
 
     query_str_params = {
